@@ -1,3 +1,5 @@
+import { KeyRound, Car, Wifi, ConciergeBell, Utensils, Waves, } from "lucide-react";
+
 export const overview = [
     {
         id:1,
@@ -20,3 +22,114 @@ export const overview = [
         content:"Step into a refined haven that blends contemporary elegance with exceptional comfort, delivering a seamless and indulgent guest experience."
     },
 ]
+
+export const facilities = [
+    {
+        id:1,
+        icon: KeyRound,
+        name: "Smart Key"
+    },
+    {
+        id:2,
+        icon: Car,
+        name: "Free Car Parking"
+    },
+    {
+        id:3,
+        icon: Wifi,
+        name: "Fast Wifi Internet"
+    },
+    {
+        id:4,
+        icon: ConciergeBell,
+        name: "Room Service"
+    },
+    {
+        id:5,
+        icon: Utensils,
+        name: "Food & Drink"
+    },
+    {
+        id:6,
+        icon: Waves,
+        name: "Swimming Pool"
+    },
+]
+
+export const services = [
+    {
+      id: 1,
+      type: "Leisure",
+      title: "Family Fun Package",
+      img: "/services/family.jpg",
+      description: "A perfect getaway designed for families to relax, bond, and enjoy premium hospitality together.",
+      includes: [
+        "Complimentary theme park tickets",
+        "Free meals for kids under 12",
+        "Spacious family room",
+        "Late checkout option"
+      ],
+      price: 180,
+      oldPrice: 240
+    },
+    {
+      id: 2,
+      type: "Relaxation",
+      title: "Spa & Beauty Retreat",
+      img: "/services/spa.jpg",
+      description: "Rejuvenate your body and mind with luxury spa treatments in a calm and serene environment.",
+      includes: [
+        "Full body massage",
+        "Facial and skincare session",
+        "Access to sauna and steam room",
+        "Complimentary herbal drinks"
+      ],
+      price: 150,
+      oldPrice: 210
+    },
+    {
+      id: 3,
+      type: "Couples",
+      title: "Romantic Getaway",
+      img: "/services/romantic.jpg",
+      description: "An intimate escape curated for couples seeking privacy, comfort, and unforgettable moments.",
+      includes: [
+        "Candlelight dinner for two",
+        "Decorated luxury suite",
+        "Complimentary wine",
+        "Late checkout"
+      ],
+      price: 220,
+      oldPrice: 300
+    },
+    {
+      id: 4,
+      type: "Executive",
+      title: "Business & Executive Package",
+      img: "/services/business.avif",
+      description: "Designed for professionals who value efficiency, comfort, and seamless business services.",
+      includes: [
+        "High-speed internet access",
+        "Complimentary breakfast",
+        "Meeting room access",
+        "Airport pickup and drop-off"
+      ],
+      price: 200,
+      oldPrice: 260
+    },
+    {
+      id: 5,
+      type: "Fitness",
+      title: "Wellness & Fitness Stay",
+      img: "/services/gym.webp",
+      description: "Maintain a healthy routine while enjoying a peaceful stay with premium wellness facilities.",
+      includes: [
+        "Daily gym access",
+        "Yoga or fitness session",
+        "Healthy meal plan",
+        "Swimming pool access"
+      ],
+      price: 170,
+      oldPrice: 230
+    }
+];

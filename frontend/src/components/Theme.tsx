@@ -3,9 +3,58 @@ import { useHotelImageStore } from "../store/HotelImageStore";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useMediaQuery } from 'react-responsive'
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Theme (){
 
+  const isMobile = useMediaQuery({ maxWidth: 768 })
+
+  useGSAP(() => {
+    const config = {
+      duration: 0.8,
+      stagger: isMobile ? 0.15 : 0.1,
+      start: isMobile ? 'top 85%' : 'bottom 1%',
+    };
+
+    gsap.set('.theme-title', { 
+      opacity: 0, 
+      y: 50 
+   });
+
+    gsap.to('.theme-title', {
+      opacity: 1, 
+      y:0,
+      duration: config.duration,
+      delay:0.4,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: '.theme-title',
+        start: config.start,
+        toggleActions: 'play none none none',
+      }
+    });
+
+
+      gsap.from('#theme-pic', {
+            opacity: 0, 
+            y: 30,
+            delay: 0.2,
+            duration: 0.5,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: 'theme-pic',
+                start:  "bottom 40%",
+                toggleActions: 'play none none none',
+            }
+        });
+
+      
+  }, [isMobile]);
     const { images, fetchHotelImages } = useHotelImageStore();
     const settings = {
         dots: false,
@@ -51,10 +100,10 @@ function Theme (){
 
     return(
         <section className="bg-[#f2fcf4] mt-[5rem] ">
-            <main className="font-serif font-extralight">
+            <main id='theme' className="font-serif font-extralight">
                 <p className="text-base lg:text-[1.2rem] text-[#76be81] text-center pb-4 pt-[3rem] tracking-wide">THROUGH OUR LENSES</p>
-                <h1 className="text-[2rem] md:text-[2.3rem] lg:text-[2.6rem] text-center font-lighter tracking-wide font-serif" >Sunrise-Stay Hotel</h1>
-                <div className="mt-[3rem]">
+                <h1 className="theme-title text-[2rem] md:text-[2.3rem] lg:text-[2.6rem] text-center font-lighter tracking-wide font-serif" >Sunrise-Stay Hotel</h1>
+                <div id="theme-pic" className="mt-[3rem]">
                     <Slider {...settings}>
                         {images.map((image) => (
                         <div key={image.id} className=" w-[100%]">

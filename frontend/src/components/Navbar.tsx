@@ -41,7 +41,7 @@ function Navbar() {
           </Link>
 
           {/* links */}
-          <span className="hidden md:flex lg:flex gap-9 justify-center">
+          <span className="hidden lg:flex gap-9 justify-center">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}

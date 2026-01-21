@@ -6,9 +6,56 @@ import { useRoomTypeStore } from "../store/RoomTypeStore";
 import Loading from "./Loading";
 import { BedSingle, User } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useMediaQuery } from 'react-responsive'
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Room() {
   const { roomTypes, fetchRoomTypes, loading } = useRoomTypeStore();
+  
+  const isMobile = useMediaQuery({ maxWidth: 768 })
+    
+  useGSAP(() => {
+    if (loading) return; // Don't animate while loading
+
+    const config = {
+      duration: 0.5,
+      stagger: isMobile ? 0.15 : 0.1,
+      start: 'top 85%',
+    };
+
+    gsap.from('#title-2', {
+      opacity: 0, 
+      y: 30,
+      duration: config.duration,
+      delay: 0.1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: '#title-2',
+        start: config.start,
+        toggleActions: 'play none none none',
+      }
+    });
+
+    // Animate the entire slider container instead of individual cards
+    gsap.from('.slider-container', {
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      delay: 0.2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: '.slider-container',
+        start: isMobile ? "top 90%" : "top 85%",
+        toggleActions: 'play none none none',
+      }
+    });
+      
+  }, [loading, isMobile]);
+  
   const settings = {
     dots: false,
     infinite: true,
@@ -58,16 +105,16 @@ function Room() {
     <section className="mt-[5rem] lg:mt-[7rem] pb-[7rem] bg-[#f2fcf4]">
       <main>
         <div className="items-center pl-[4%] pt-[4rem]">
-          <h5 className="tracking-wider font-serif text-[#76be81]">ROOMS</h5>
-          <h1 className="text-[2rem] md:text-[2.4rem] lg:text-[2.6rem] font-lighter tracking-wide font-serif w-[90%] lg:w-[45%]">
+          <h5 id="title" className="tracking-wider font-serif text-[#76be81]">ROOMS</h5>
+          <h1 id="title-2" className="text-[2rem] md:text-[2.4rem] lg:text-[2.6rem] font-lighter tracking-wide font-serif w-[90%] lg:w-[45%]">
             Reste's Exclusive Rooms & Suites
           </h1>
         </div>
-        <div className="mt-[3rem] w-full overflow-hidden">
+        <div className="slider-container mt-[3rem] w-full overflow-hidden">
           <Slider {...settings}>
             {roomTypes.map((room, i) => (
               <div key={room.id} className="px-2 md:px-3">
-                <div className={`bg-white rounded-b-[10px] ${i % 2 !== 0 ? "mt-7" : "mt-0"}`}>
+                <div className={`room-card bg-white rounded-b-[10px] ${i % 2 !== 0 ? "mt-7" : "mt-0"}`}>
                   <div className="h-[220px] md:h-[250px] lg:h-[270px] rounded-lg relative transform transition duration-300">
                     <img src={room.image} alt={room.name} className="w-full h-full object-cover rounded-t-[8px] transition-[filter,transform] duration-[400ms,300ms] ease-in-out hover:blur-[3px]"/>
                     <div className="absolute top-2 md:top-3 lg:top-4 right-3 md:right-4 lg:right-5 z-20 bg-[#76be81] rounded-[10px]">

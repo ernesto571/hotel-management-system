@@ -45,7 +45,7 @@ function Hero() {
       opacity:0,
       duration: 0.5,
       ease: "expo.out",
-      delay:1.3
+      delay:1.7
     })
   }
   }, [loading])
