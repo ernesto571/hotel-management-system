@@ -15,7 +15,7 @@ function Services() {
     const config = {
       duration: 0.8,
       stagger: isMobile ? 0.15 : 0.1,
-      start: isMobile ? 'bottom 85%' : 'bottom 25%',
+      start: isMobile ? 'bottom 140%' : 'bottom 25%',
     };
 
     gsap.from('.service-title', {

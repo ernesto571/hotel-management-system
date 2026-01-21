@@ -16,9 +16,9 @@ function Theme (){
 
   useGSAP(() => {
     const config = {
-      duration: 0.8,
+      duration: isMobile ? 0.1 : 0.5,
       stagger: isMobile ? 0.15 : 0.1,
-      start: isMobile ? 'top 85%' : 'bottom 1%',
+      start: isMobile ? 'bottom 140%' : 'bottom 4%',
     };
 
     gsap.set('.theme-title', { 
@@ -30,7 +30,7 @@ function Theme (){
       opacity: 1, 
       y:0,
       duration: config.duration,
-      delay:0.4,
+      delay: config.duration,
       ease: "power2.out",
       scrollTrigger: {
         trigger: '.theme-title',
@@ -48,7 +48,7 @@ function Theme (){
             ease: "power2.out",
             scrollTrigger: {
                 trigger: 'theme-pic',
-                start:  "bottom 40%",
+                start: isMobile ? 'bottom 250%' : "bottom 40%",
                 toggleActions: 'play none none none',
             }
         });
