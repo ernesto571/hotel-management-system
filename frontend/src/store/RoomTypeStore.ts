@@ -2,7 +2,7 @@ import {create} from "zustand"
 import axios from "../lib/axios";
 
 interface RoomTypes {
-    id: string;
+    id: number;
     name: string;
     tagline: string;
     description: string;
@@ -29,7 +29,7 @@ export const useRoomTypeStore = create<HotelRoomTypes>((set) => ({
     roomTypes : [],
     loading : false,
     fetchRoomTypes : async() => {
-        console.log('fetchroomtypes: starting reques...')
+        console.log('fetchroomtypes: starting request...')
         
         try {
             set({ loading : true});

@@ -63,7 +63,7 @@ function Services() {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextService, 5000);
+    const interval = setInterval(nextService, 3000);
     return () => clearInterval(interval);
   }, []);
 

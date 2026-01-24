@@ -41,7 +41,7 @@ export const ROOM_TYPES = [
       max_children: 1,
       size_sqm: 35,
       price_per_night: 140.00,
-      image: "", // fill your URL here
+      image: "https://media.istockphoto.com/id/1815808691/photo/luxury-bedroom-suite-in-resort-high-rise-hotel-with-cushion.webp?a=1&b=1&s=612x612&w=0&k=20&c=UZ72TuOX4FJrasB3Ft5K7Lqzj8r2gTQubccH2CDLg2w=", // fill your URL here
       features: [
         "1 King Bed",
         "Work Desk",
@@ -75,7 +75,7 @@ export const ROOM_TYPES = [
       max_children: 0,
       size_sqm: 38,
       price_per_night: 170.00,
-      image: "", // fill your URL here
+      image: "https://media.istockphoto.com/id/1066999762/photo/3d-rendering-beautiful-luxury-bedroom-suite-in-hotel-with-tv.webp?a=1&b=1&s=612x612&w=0&k=20&c=Fjo2K7sfzbFkE5fB3z_POzewLQwS4CoEpaWzp4DdMrw=", // fill your URL here
       features: [
         "King Bed",
         "Ergonomic Work Desk",
@@ -108,7 +108,7 @@ export const ROOM_TYPES = [
       max_children: 2,
       size_sqm: 55,
       price_per_night: 220.00,
-      image: "", // fill your URL here
+      image: "https://images.unsplash.com/photo-1741506131058-533fcf894483?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdGVsJTIwcm9vbSUyMG11bHRpcGxlJTIwYmVkc3xlbnwwfHwwfHx8MA%3D%3D", // fill your URL here
       features: [
         "1 King Bed + Twin Beds / Sofa Bed",
         "Large Bathroom",
@@ -142,7 +142,7 @@ export const ROOM_TYPES = [
       max_children: 1,
       size_sqm: 75,
       price_per_night: 350.00,
-      image: "", // fill your URL here
+      image: "https://plus.unsplash.com/premium_photo-1661963657190-ecdd1ca794f9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJlc2lkZW50aWFsJTIwc3VpdGV8ZW58MHx8MHx8fDA%3D", // fill your URL here
       features: [
         "Separate Living Area",
         "King Bed",

@@ -7,9 +7,11 @@ import { overview } from "../constants";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
 import gsap from "gsap";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
   const { images, fetchHotelImages, loading } = useHotelImageStore();
+  const navigate = useNavigate()
 
   // animation
    useGSAP(() => {
@@ -115,7 +117,7 @@ function Hero() {
 
           {/* Buttons */}
           <div id="hero-button" className="mt-8 ml-3 md:ml-[6rem] lg:ml-[6rem]lg:ml-[6rem] flex gap-6">
-            <button className="px-6 py-3 bg-[#234c48] text-white border border-white font-semibold rounded-[5px]">
+            <button onClick={() => {navigate(`/rooms`)}} className="px-6 py-3 bg-[#234c48] text-white border border-white font-semibold rounded-[5px] hover:bg-gray-900 ease-in-out duration-200">
               CONTACT US
             </button>
             <button className="px-6 py-3 border bg-white text-[#1a4042] rounded-[5px]">

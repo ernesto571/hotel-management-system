@@ -8,6 +8,7 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import Loading from "./components/Loading";
 import RoomDetails from "./pages/RoomDetails";
+import RoomPage from "./pages/RoomPage";
 
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
         <Navbar/>
         <Routes>
           <Route path="/" element={<HomePage/>} />
-          <Route path="/:RoomName" element={<RoomDetails/>} />
+          <Route path="/rooms" element={<RoomPage/>} />
+          <Route path="/rooms/:RoomName" element={<RoomDetails/>} />
           <Route path="/sign-in/*" element={<SignInPage/>} />
           <Route path="/sign-up/*" element={<SignUpPage />} />
         </Routes>

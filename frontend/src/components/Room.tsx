@@ -124,7 +124,7 @@ function Room() {
                   <div className="mt-6 pb-6 w-[95%] md:w-[90%] lg:w-[90%] mx-auto">
                     <span className="font-serif tracking-wide font-lighter">
                       <p className="text-[#76be81] text-base lg:text-[1.2rem] pb-3">{room.name}</p>
-                      <Link to={`/${room.name}`} className="text-[#666666] text-[1.1rem] lg:text-[1.3rem] lg:whitespace-nowrap hover:text-[#76be81] hover:underline hover:cursor-pointer ease-in-out duration-300 transition-transform">{room.tagline}</Link>
+                      <Link to={`/rooms/${room.name}`} className="text-[#666666] text-[1.1rem] lg:text-[1.3rem] lg:whitespace-nowrap hover:text-[#76be81] hover:underline hover:cursor-pointer ease-in-out duration-300 transition-transform">{room.tagline}</Link>
                     </span>
                     <div className="flex gap-4 lg:gap-7 pt-4 text-sm lg:text-base">
                       <span className="flex gap-2 text-[#666666] items-center">

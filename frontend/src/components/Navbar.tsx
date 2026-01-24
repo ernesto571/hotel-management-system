@@ -31,11 +31,11 @@ function Navbar() {
             ${scrolled ? "backdrop-blur shadow-lg bg-white" : "text-white bg-inherit"}
         `}
       >
-        <div className="flex justify-between items-center w-[90%] md:w-[85%] mx-auto mt-2 md:mt-4 lg:mt-4 py-2">
+        <div className="flex justify-between items-center w-[90%] mx-auto mt-2 py-2">
           {/* Logo and name */}
           <Link to="/" className="flex gap-4 items-center">
             <img src="/logo_01.png" alt="Logo" className="h-8 w-auto" />
-            <h1 className="hidden lg:block text-base lg:text-[1.5rem] font-serif font-light">
+            <h1 className="hidden lg:block text-base lg:text-[1.3rem] font-serif font-light">
               SUNRISE-STAY HOTEL
             </h1>
           </Link>

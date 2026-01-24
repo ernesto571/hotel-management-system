@@ -37,7 +37,7 @@ async function initDB(){
         // room types table
         await sql`
             CREATE TABLE IF NOT EXISTS room_types (
-                id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+                id SERIAL PRIMARY KEY ,
                 name VARCHAR(50) UNIQUE NOT NULL,
                 tagline VARCHAR(100), -- "Oceanview Deluxe Room"
                 description TEXT,

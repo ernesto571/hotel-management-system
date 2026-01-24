@@ -36,7 +36,7 @@ function RoomDetails () {
   return (
     <section className="min-h-screen">
       {/* Image wrapper */}
-      <div className="relative w-full h-[320px] md:h-[520px] lg:h-[400px] overflow-hidden">
+      <div className="relative w-full h-[320px] md:h-[350px] lg:h-[400px] overflow-hidden">
         <img
           src="/room-details-img.jpg"
           alt={room.name}
@@ -49,7 +49,9 @@ function RoomDetails () {
       <div className="grid grid-cols-3 w-[80%] mx-auto gap-[3rem] mt-[8rem]">
         {/* left section */}
         <section className="col-span-2">
-            <img src={room.image} alt="" className="h-[320px] lg:h-[380px] object-cover w-full rounded-lg" />
+            <div className="w-full h-[320px] lg:h-[380px]">
+              <img src={room.image}  className="w-full h-full object-cover rounded-t-[8px]" />                      
+            </div>
 
             <div className="mt-4 font-serif font-extralight">
                 <p className="text-[#76be81] text-[1.2rem]">{room.name}</p>
