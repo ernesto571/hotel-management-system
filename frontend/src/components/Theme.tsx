@@ -18,7 +18,7 @@ function Theme (){
     const config = {
       duration: isMobile ? 0.1 : 0.5,
       stagger: isMobile ? 0.15 : 0.1,
-      start: isMobile ? 'bottom 140%' : 'bottom 4%',
+      start: isMobile ? 'bottom 110%' : 'bottom 4%',
     };
 
     gsap.set('.theme-title', { 

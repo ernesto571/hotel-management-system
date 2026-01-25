@@ -10,6 +10,7 @@ import Loading from "./components/Loading";
 import RoomDetails from "./pages/RoomDetails";
 import RoomPage from "./pages/RoomPage";
 import ContactPage from "./pages/ContactPage";
+import ServicePage from "./pages/ServicePage";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<HomePage/>} />
           <Route path="/contact-us" element={<ContactPage/>} />
           <Route path="/rooms" element={<RoomPage/>} />
+          <Route path="/services" element={<ServicePage/>} />
           <Route path="/rooms/:RoomName" element={<RoomDetails/>} />
           <Route path="/sign-in/*" element={<SignInPage/>} />
           <Route path="/sign-up/*" element={<SignUpPage />} />

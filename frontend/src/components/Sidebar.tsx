@@ -56,7 +56,7 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
                 <h3 className="text-[1.5rem]">Contact Info</h3>
 
                 <span className="flex mt-5 text-[0.9rem] gap-2 items-center">
-                    <MapPin size={20} className="text-[#76be81] "/>
+                    <MapPin size={50} className="text-[#76be81] "/>
                     <p>Electric Brixton, Town Hall Parade, Brixton Hill, London SW2 1RJ, United Kingdom </p>
                 </span>
 

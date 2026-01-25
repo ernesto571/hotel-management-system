@@ -54,7 +54,7 @@ function Footer (){
                             <h1 className="text-[1.5rem] lg:text-[2rem] font-serif font-extralight pb-1">Quick Links</h1>
                             <Link to="/" className="py-2 text-sm hover:text-[#76be81] hover:translate-x-2 ease-in-out duration-300">Home</Link>
                             <Link to="/rooms" className="py-2 text-sm hover:text-[#76be81] hover:translate-x-2 ease-in-out duration-300">Rooms</Link>
-                            <Link to="/contact" className="py-2 text-sm hover:text-[#76be81] hover:translate-x-2 ease-in-out duration-300">Contact</Link>
+                            <Link to="/contact-us" className="py-2 text-sm hover:text-[#76be81] hover:translate-x-2 ease-in-out duration-300">Contact</Link>
                             <Link to="/sign-in" className="py-2 text-sm hover:text-[#76be81] hover:translate-x-2 ease-in-out duration-300">Sign In</Link>
                         </span>
 

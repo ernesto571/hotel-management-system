@@ -76,8 +76,8 @@ function RoomPage(){
                     return (
                         <div 
                             key={room.id} 
-                            className={`grid md:flex gap-8 mt-9 w-[90%] md:[98%] lg:w-[80%] mx-auto ${
-                                isOdd ? 'md::flex-row' : 'md:flex-row-reverse'
+                            className={`grid md:flex gap-8 mt-9 w-[90%] md:w-[95%] lg:w-[80%] mx-auto ${
+                                isOdd ? 'md:flex-row' : 'md:flex-row-reverse'
                             }`}
                         >
                             <div className="relative w-full h-[270px]">
