@@ -13,7 +13,7 @@ function Navbar() {
     { path: "/", label: "Home" },
     { path: "/rooms", label: "Rooms" },
     { path: "/services", label: "Services" },
-    { path: "/contact", label: "Contact Us" },
+    { path: "/contact-us", label: "Contact Us" },
   ];
 
   useEffect(() => {
@@ -46,7 +46,8 @@ function Navbar() {
               <NavLink
                 key={link.path}
                 to={link.path}
-                className="hover:text-[#76be81] transition-colors"
+                className={ ({isActive}) => ` hover:text-[#76be81] font-semibold text-[0.9rem] tracking-wide ease-in duration-100
+                ${isActive ? "text-[#76be81] " : ""} `}
               >
                 {link.label}
               </NavLink>

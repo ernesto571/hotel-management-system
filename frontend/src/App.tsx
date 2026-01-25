@@ -9,6 +9,7 @@ import SignUpPage from "./pages/SignUpPage";
 import Loading from "./components/Loading";
 import RoomDetails from "./pages/RoomDetails";
 import RoomPage from "./pages/RoomPage";
+import ContactPage from "./pages/ContactPage";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Navbar/>
         <Routes>
           <Route path="/" element={<HomePage/>} />
+          <Route path="/contact-us" element={<ContactPage/>} />
           <Route path="/rooms" element={<RoomPage/>} />
           <Route path="/rooms/:RoomName" element={<RoomDetails/>} />
           <Route path="/sign-in/*" element={<SignInPage/>} />

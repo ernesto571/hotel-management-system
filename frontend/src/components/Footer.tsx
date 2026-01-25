@@ -70,7 +70,7 @@ function Footer (){
                         {/* contact */}
                         <span className="text-white tracking-wide col-span-2 md:col-span-1 lg:col-span-1">
                             <h1 className="text-[1.5rem] lg:text-[2rem] font-serif font-extralight pb-1">Contact Us</h1>
-                            <p className="py-2 text-sm leading-relaxed">United States —350 Fifth Avenue, 21st Floor New York, NY 10118</p>
+                            <p className="py-2 text-sm leading-relaxed">Electric Brixton, Town Hall Parade, Brixton Hill, London SW2 1RJ, United Kingdom</p>
                             <p className="py-3 text-sm">080 471 5876</p>
                             <p className="py-2 text-sm">Mon-Fri 8:00am - 6:00pm</p>
                         </span>

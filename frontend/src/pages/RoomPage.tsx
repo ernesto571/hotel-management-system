@@ -42,7 +42,7 @@ function RoomPage(){
           })
       
         }
-        }, [loading])
+    }, [loading])
   
     useEffect(() => {
         fetchRoomTypes();

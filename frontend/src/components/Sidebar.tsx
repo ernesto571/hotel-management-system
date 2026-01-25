@@ -11,7 +11,7 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
     { path: "/", label: "Home" },
     { path: "/rooms", label: "Rooms" },
     { path: "/services", label: "Services" },
-    { path: "/contact", label: "Contact Us" },
+    { path: "/contact-us", label: "Contact Us" },
     { path: "/my-bookings", label: "My Bookings" },
   ];
 
@@ -57,7 +57,7 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
 
                 <span className="flex mt-5 text-[0.9rem] gap-2 items-center">
                     <MapPin size={20} className="text-[#76be81] "/>
-                    <p>Main Street, Melbourne, Australia</p>
+                    <p>Electric Brixton, Town Hall Parade, Brixton Hill, London SW2 1RJ, United Kingdom </p>
                 </span>
 
                 <span className="flex mt-6 text-[0.9rem] gap-2 items-center">
