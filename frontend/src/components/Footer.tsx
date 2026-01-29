@@ -19,7 +19,7 @@ function Footer (){
                         <input 
                             type="text" 
                             placeholder="Enter Your Email"  
-                            className="w-full border border-[#3e3e3e] rounded-[4px] bg-inherit py-3 pl-4 pr-[130px] text-white placeholder:text-gray-400"
+                            className="w-full border border-[#3e3e3e] rounded-[4px] bg-inherit py-3 pl-4 pr-[130px] text-white placeholder:text-gray-400 outline-none"
                         />
                         <button className="absolute bg-[#76be81] right-1 top-1/2 -translate-y-1/2 py-2 px-5 rounded-[4px] text-white hover:bg-black duration-500 ease-in-out whitespace-nowrap">
                             SUBSCRIBE
