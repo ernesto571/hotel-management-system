@@ -1,6 +1,7 @@
 import { sql } from "../config/db.js";
 import { HOTEL_IMAGES } from "./hotel_images.js";
 import { ROOM_TYPES } from "./room_type.js";
+import { ROOMS } from "./rooms.js";
 
 async function seedHotelImages() {
     console.log("🌱 Seeding hotel images...");
@@ -53,8 +54,25 @@ async function seedRoomTypes() {
     }
 }
 
+async function seedRooms() {
+    console.log("🌱 Seeding hotel rooms...");
+
+    try {
+        for (const room of ROOMS) {
+            await sql`
+                INSERT INTO rooms (room_number, room_type_name, floor, status)
+                VALUES (${room.room_number}, ${room.room_type_name}, ${room.floor}, ${room.status})
+            `;
+        }
+        console.log("✅ Hotel rooms seeding completed.");
+    } catch (error) {
+        console.error("❌ Failed to seed hotel rooms:", error);
+    }
+}
+
 // Call these functions
 (async () => {
     // await seedHotelImages();
-    await seedRoomTypes();
+    // await seedRoomTypes();
+    await seedRooms()
 })();

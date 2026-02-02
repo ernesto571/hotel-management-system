@@ -3,18 +3,12 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu } from "lucide-react";
 import Sidebar from "./Sidebar";
+import { navLinks } from "../constants";
 
 function Navbar() {
   const { isSignedIn } = useUser();
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/rooms", label: "Rooms" },
-    { path: "/services", label: "Services" },
-    { path: "/contact-us", label: "Contact Us" },
-  ];
 
   useEffect(() => {
     const onScroll = () => {

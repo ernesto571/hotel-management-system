@@ -29,7 +29,8 @@ function ContactForm(){
         Name: ${formData.name}
         Email: ${formData.email}
 
-        💬 Message:
+        💬 Message From Surise-Stay Hotel:
+        
         ${formData.message}
         `;
 

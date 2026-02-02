@@ -6,6 +6,7 @@ import { clerkMiddleware } from "@clerk/express";
 import userRoutes from "../routes/auth.route.js"
 import hotelImagesRoutes from "../routes/hotel_images.route.js"
 import roomTypes from "../routes/room_types.route.js"
+import bookingRoutes from "../routes/booking.route.js"
 import "dotenv/config";
 
 
@@ -30,6 +31,7 @@ app.use(clerkMiddleware());
 app.use("/api/users", userRoutes);
 app.use("/api", hotelImagesRoutes);
 app.use("/api", roomTypes);
+app.use("/api/bookings", bookingRoutes);
 
 // app.get("/", (req, res) => {
 //     console.log("hotel backend");

@@ -1,5 +1,21 @@
 import { KeyRound, Car, Wifi, ConciergeBell, Utensils, Waves, } from "lucide-react";
 
+export const sidebarLinks = [
+  { path: "/", label: "Home" },
+  { path: "/rooms", label: "Rooms" },
+  { path: "/services", label: "Services" },
+  { path: "/contact-us", label: "Contact Us" },
+  { path: "/my-bookings", label: "My Bookings" },
+];
+
+export const navLinks = [
+  { path: "/", label: "Home" },
+  { path: "/rooms", label: "Rooms" },
+  { path: "/services", label: "Services" },
+  { path: "/contact-us", label: "Contact Us" },
+];
+
+
 export const overview = [
     {
         id:1,

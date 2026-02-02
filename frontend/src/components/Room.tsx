@@ -49,7 +49,7 @@ function Room() {
       ease: "power2.out",
       scrollTrigger: {
         trigger: '.slider-container',
-        start: isMobile ? "top 90%" : "top 85%",
+        start: isMobile ? "top 90%" : "top 95%",
         toggleActions: 'play none none none',
       }
     });

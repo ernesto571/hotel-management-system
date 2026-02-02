@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Clock, Mail, MapPin, Phone, X } from "lucide-react";
+import { sidebarLinks } from "../constants";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -7,13 +8,6 @@ interface SidebarProps {
 }
 
 function Sidebar({ isOpen, onClose }: SidebarProps) {
-  const sidebarLinks = [
-    { path: "/", label: "Home" },
-    { path: "/rooms", label: "Rooms" },
-    { path: "/services", label: "Services" },
-    { path: "/contact-us", label: "Contact Us" },
-    { path: "/my-bookings", label: "My Bookings" },
-  ];
 
   return (
     <>

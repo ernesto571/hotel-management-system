@@ -11,6 +11,9 @@ import RoomDetails from "./pages/RoomDetails";
 import RoomPage from "./pages/RoomPage";
 import ContactPage from "./pages/ContactPage";
 import ServicePage from "./pages/ServicePage";
+import PaymentPage from "./pages/PaymentPage";
+import BookingSuccessPage from "./pages/BookingSuccessPage";
+import MyBookingsPage from "./pages/MyBookingsPage";
 
 
 function App() {
@@ -30,7 +33,10 @@ function App() {
           <Route path="/contact-us" element={<ContactPage/>} />
           <Route path="/rooms" element={<RoomPage/>} />
           <Route path="/services" element={<ServicePage/>} />
+          <Route path="/my-bookings" element={<MyBookingsPage/>} />
           <Route path="/rooms/:RoomName" element={<RoomDetails/>} />
+          <Route path="/payment" element={<PaymentPage/>} />
+          <Route path="/booking-success/:bookingId" element={<BookingSuccessPage/>} />
           <Route path="/sign-in/*" element={<SignInPage/>} />
           <Route path="/sign-up/*" element={<SignUpPage />} />
         </Routes>
