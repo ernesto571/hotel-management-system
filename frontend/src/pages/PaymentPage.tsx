@@ -9,6 +9,10 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { CheckCircle2, Lock, CreditCard, Calendar, Users, ArrowLeft } from "lucide-react";
+import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/all";
+import gsap from "gsap";
+import Footer from "../components/Footer";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -36,8 +40,40 @@ function PaymentForm() {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
-  const { currentBooking, clientSecret, confirmBooking, loading, error } =
-    useBookingStore();
+  const { currentBooking, clientSecret, confirmBooking, loading, error } = useBookingStore();
+
+  useGSAP(() => {
+    // Only run animation when loading is complete
+    if (!loading) {
+      const tilteSplit = new SplitText("#payment-title", { type: 'chars, words' })
+      const subtitleSplit = new SplitText("#payment-subtitle", { type: 'lines' })
+  
+      gsap.from(tilteSplit.chars, {
+        opacity:0,
+        yPercent: 50,
+        delay: 0.2,
+        duration: 1,
+        ease: "expo.out",
+        stagger: 0.06,
+      });
+  
+      gsap.from(subtitleSplit.lines, {
+        opacity:0,
+        duration: 1,
+        ease: "expo.out",
+        stagger: 0.06,
+        delay:1.3
+      })
+  
+      gsap.from('#payment-content', {
+        opacity:0,
+        duration: 0.5,
+        ease: "expo.out",
+        delay:1.7
+      })
+  
+    }
+  }, [loading])
 
   const [processing, setProcessing] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
@@ -71,8 +107,6 @@ function PaymentForm() {
       return isNaN(parsed) ? 0 : parsed;
     }
     
-    // Default to 0 if undefined or invalid
-    return 0;
   };
 
   const totalPrice = getTotalPrice();
@@ -126,15 +160,15 @@ function PaymentForm() {
         />
         <div className="grid absolute inset-0 items-center justify-center text-center font-serif tracking-wider text-white">
           <div>
-            <div className="text-center mb-12">
+            <div className="text-center ">
               <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full mb-4">
                 <Lock size={16} />
                 <span className="text-sm font-semibold">Secure Payment</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-serif font-light white mb-3">
+              <h1 id="payment-title" className="text-4xl md:text-5xl font-serif font-light white mb-3">
                 Complete Your Reservation
               </h1>
-              <p className="text-white text-lg">
+              <p id="payment-subtitle" className="text-white text-[0.9rem] md:text-lg">
                 You're just one step away from your perfect stay
               </p>
             </div>
@@ -148,7 +182,7 @@ function PaymentForm() {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100/20 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 py-12">
+      <div id="payment-content" className="relative max-w-6xl mx-auto px-4 py-12">
         {/* Back button */}
         <button
           onClick={() => navigate(-1)}
@@ -231,7 +265,7 @@ function PaymentForm() {
                   </div>
                   <div className="pt-3 border-t-2 border-gray-900 flex justify-between items-center">
                     <span className="text-xl font-semibold text-gray-900">Total</span>
-                    <span className="text-3xl font-bold text-emerald-600">
+                    <span className="text-[1.6rem] md:text-3xl font-bold text-emerald-600">
                       ${totalPrice.toFixed(2)}
                     </span>
                   </div>
@@ -339,6 +373,8 @@ function PaymentForm() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

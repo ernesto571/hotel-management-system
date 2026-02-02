@@ -4,6 +4,10 @@ import { useBookingStore } from "../store/BookingStore";
 import { Calendar, Users, MapPin, Eye, X, Clock, CheckCircle, XCircle, AlertCircle } from "lucide-react";
 import Loading from "../components/Loading";
 import { toast } from "react-hot-toast";
+import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/all";
+import gsap from "gsap";
+import Footer from "../components/Footer";
 
 export default function MyBookingsPage() {
   const navigate = useNavigate();
@@ -12,6 +16,38 @@ export default function MyBookingsPage() {
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [bookingToCancel, setBookingToCancel] = useState<string | null>(null);
 
+  useGSAP(() => {
+    // Only run animation when loading is complete
+    if (!loading) {
+      const tilteSplit = new SplitText("#bookings-title", { type: 'chars, words' })
+      const subtitleSplit = new SplitText("#bookings-subtitle", { type: 'lines' })
+  
+      gsap.from(tilteSplit.chars, {
+        opacity:0,
+        yPercent: 50,
+        delay: 0.2,
+        duration: 1,
+        ease: "expo.out",
+        stagger: 0.06,
+      });
+  
+      gsap.from(subtitleSplit.lines, {
+        opacity:0,
+        duration: 1,
+        ease: "expo.out",
+        stagger: 0.06,
+        delay:1.3
+      })
+  
+      gsap.from('#bookings-content', {
+        opacity:0,
+        duration: 0.5,
+        ease: "expo.out",
+        delay:1.7
+      })
+  
+    }
+  }, [loading])
   useEffect(() => {
     fetchUserBookings();
   }, [fetchUserBookings]);
@@ -104,17 +140,17 @@ export default function MyBookingsPage() {
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute inset-0 flex items-center justify-center text-center">
           <div>
-            <h1 className="text-[2.5rem] md:text-[3.5rem] font-serif text-white tracking-wider">
+            <h1 id="bookings-title" className="text-[2.2rem] md:text-[3rem] lg:text-[3.5rem] font-serif text-white tracking-wider">
               My Bookings
             </h1>
-            <p className="text-white/90 text-lg md:text-xl mt-3">
+            <p id="bookings-subtitle" className="text-white/90 md:text-xl mt-3">
               Manage all your reservations in one place
             </p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div id="bookings-content" className="max-w-7xl mx-auto px-4 py-12">
         {/* Filter Tabs */}
         <div className="flex flex-wrap gap-3 mb-8">
           <button
@@ -274,13 +310,32 @@ export default function MyBookingsPage() {
 
                   {/* Action Buttons */}
                   <div className="flex flex-wrap gap-3 pt-6 border-t border-gray-200">
-                    <button
-                      onClick={() => navigate(`/booking-success/${booking.id}`)}
-                      className="flex items-center gap-2 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors"
-                    >
-                      <Eye size={18} />
-                      View Details
-                    </button>
+                    {/* View Details Button - Conditional Navigation */}
+                    {booking.status === "pending" ? (
+                      <button
+                        onClick={() => navigate('/payment')}
+                        className="flex items-center gap-2 px-6 py-2.5 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-lg transition-colors"
+                      >
+                        <Eye size={18} />
+                        Complete Payment
+                      </button>
+                    ) : booking.status === "cancelled" ? (
+                      <button
+                        onClick={() => navigate(`/booking-failed/${booking.id}`)}
+                        className="flex items-center gap-2 px-6 py-2.5 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-colors"
+                      >
+                        <Eye size={18} />
+                        View Details
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => navigate(`/booking-success/${booking.id}`)}
+                        className="flex items-center gap-2 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors"
+                      >
+                        <Eye size={18} />
+                        View Details
+                      </button>
+                    )}
 
                     {canCancelBooking(booking) && (
                       <button
@@ -342,6 +397,8 @@ export default function MyBookingsPage() {
           </div>
         </div>
       )}
+
+      <Footer />
     </div>
   );
 }

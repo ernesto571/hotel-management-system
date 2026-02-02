@@ -14,6 +14,7 @@ import ServicePage from "./pages/ServicePage";
 import PaymentPage from "./pages/PaymentPage";
 import BookingSuccessPage from "./pages/BookingSuccessPage";
 import MyBookingsPage from "./pages/MyBookingsPage";
+import BookingFailedPage from "./pages/BookingFailedPage";
 
 
 function App() {
@@ -35,8 +36,11 @@ function App() {
           <Route path="/services" element={<ServicePage/>} />
           <Route path="/my-bookings" element={<MyBookingsPage/>} />
           <Route path="/rooms/:RoomName" element={<RoomDetails/>} />
+
           <Route path="/payment" element={<PaymentPage/>} />
           <Route path="/booking-success/:bookingId" element={<BookingSuccessPage/>} />
+          <Route path="/booking-failed/:bookingId" element={<BookingFailedPage/>} />
+
           <Route path="/sign-in/*" element={<SignInPage/>} />
           <Route path="/sign-up/*" element={<SignUpPage />} />
         </Routes>

@@ -4,12 +4,48 @@ import { useBookingStore } from "../store/BookingStore";
 import { CheckCircle2, Calendar, Users, Baby } from "lucide-react";
 import Loading from "../components/Loading";
 import { useEffect, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/all";
+import gsap from "gsap";
+import Footer from "../components/Footer";
 
 function RoomDetails() {
   const { RoomName } = useParams();
   const navigate = useNavigate();
   const { roomTypes, loading, fetchRoomTypes } = useRoomTypeStore();
   const { createBooking, loading: bookingLoading, error: bookingError } = useBookingStore();
+
+  useGSAP(() => {
+    // Only run animation when loading is complete
+    if (!loading) {
+      const tilteSplit = new SplitText("#room-details-title", { type: 'chars, words' })
+      const subtitleSplit = new SplitText("#room-details-subtitle", { type: 'lines' })
+  
+      gsap.from(tilteSplit.chars, {
+        opacity:0,
+        yPercent: 50,
+        duration: 1,
+        ease: "expo.out",
+        stagger: 0.06,
+      });
+  
+      gsap.from(subtitleSplit.lines, {
+        opacity:0,
+        duration: 1,
+        ease: "expo.out",
+        stagger: 0.06,
+        delay:1.3
+      })
+  
+      gsap.from('#room-details', {
+        opacity:0,
+        duration: 0.5,
+        ease: "expo.out",
+        delay:1.7
+      })
+  
+    }
+  }, [loading])
 
   const [formData, setFormData] = useState({
     room_type_name: "",
@@ -75,27 +111,6 @@ function RoomDetails() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validation
-    if (!formData.check_in || !formData.check_out) {
-      alert("Please select check-in and check-out dates");
-      return;
-    }
-
-    if (formData.adults > room.max_adults) {
-      alert(`Maximum ${room.max_adults} adults allowed`);
-      return;
-    }
-
-    if (formData.children > room.max_children) {
-      alert(`Maximum ${room.max_children} children allowed`);
-      return;
-    }
-
-    if (nights <= 0) {
-      alert("Check-out date must be after check-in date");
-      return;
-    }
-
     try {
       await createBooking(formData);
       // Redirect to payment page
@@ -119,10 +134,10 @@ function RoomDetails() {
         />
         <div className="grid absolute inset-0 items-center justify-center text-center font-serif tracking-wider text-white">
           <div>
-            <h2 id="room-title" className="text-[2.2rem] md:text-[3rem]">
+            <h2 id="room-details-title" className="text-[2.2rem] md:text-[3rem]">
               {room.name}
             </h2>
-            <h5 id="room-subtitle" className=" md:text-[1.2rem] mt-3 lg:mt-5">
+            <h5 id="room-details-subtitle" className=" md:text-[1.2rem] mt-3 lg:mt-5">
               {room.tagline}
             </h5>
           </div>
@@ -130,7 +145,7 @@ function RoomDetails() {
       </div>
 
       {/* Content */}
-      <div className="grid grid-cols-3 w-[80%] mx-auto gap-[3rem] mt-[8rem]">
+      <div id="room-details" className="grid grid-cols-1  lg:grid-cols-3 w-[95%] md:w-[80%] mx-auto gap-[3rem] mt-[4rem] lg:mt-[8rem] mb-[4rem]">
         {/* left section */}
         <section className="col-span-2">
           <div className="w-full h-[320px] lg:h-[380px]">
@@ -252,7 +267,7 @@ function RoomDetails() {
               <h2 className="text-[1.8rem] font-serif font-light text-[#1c1c1c]">
                 Book Your Stay
               </h2>
-              <p className="text-[2rem] font-bold text-[#76be81] mt-2">
+              <p className="text-[1.7rem] md:text-[2rem] font-bold text-[#76be81] mt-2">
                 ${room.price_per_night}
                 <span className="text-sm text-gray-600 font-normal">
                   {" "}
@@ -423,6 +438,8 @@ function RoomDetails() {
           </div>
         </section>
       </div>
+
+      <Footer />
     </section>
   );
 }

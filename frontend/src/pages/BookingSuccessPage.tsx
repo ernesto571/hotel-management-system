@@ -1,13 +1,36 @@
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useBookingStore } from "../store/BookingStore";
-import { CheckCircle, Calendar, Users, MapPin, Mail, Download, Home } from "lucide-react";
+import { CheckCircle, Calendar, Users, MapPin, Home, CalendarCheck, Bed } from "lucide-react";
 import Loading from "../components/Loading";
+import Footer from "../components/Footer";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap"
 
 export default function BookingSuccessPage() {
   const { bookingId } = useParams();
   const navigate = useNavigate();
   const { currentBooking, fetchBookingById, loading, resetBooking } = useBookingStore();
+
+  useGSAP(() => {
+    // Only run animation when loading is complete
+    if (!loading) {
+      
+      gsap.set('#success-icon', {
+        opacity:0,
+        y:40,
+        delay:0.7
+      })
+
+      gsap.to('#success-icon', {
+        opacity:2,
+        duration: 1,
+        y:0,
+        ease: "expo.out",
+      })
+  
+    }
+  }, [loading])
 
   useEffect(() => {
     if (bookingId) {
@@ -79,16 +102,16 @@ export default function BookingSuccessPage() {
           {/* Animated checkmark */}
           <div className="relative inline-block mb-6">
             <div className="absolute inset-0 bg-emerald-400/20 rounded-full animate-ping"></div>
-            <div className="relative bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full p-6 shadow-2xl shadow-emerald-200">
+            <div id="success-icon" className="relative bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full p-6 shadow-2xl shadow-emerald-200">
               <CheckCircle size={64} className="text-white" strokeWidth={2.5} />
             </div>
           </div>
 
           {/* Success message */}
-          <h1 className="text-4xl md:text-5xl font-serif font-light text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-5xl font-serif font-light text-gray-900 mb-4">
             Booking Confirmed!
           </h1>
-          <p className="text-xl text-gray-600 mb-2">
+          <p className=" md:text-xl text-gray-600 mb-2">
             Your reservation has been successfully confirmed
           </p>
           <p className="text-gray-500">
@@ -97,7 +120,7 @@ export default function BookingSuccessPage() {
         </div>
 
         {/* Booking Details Card */}
-        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-8 border border-gray-100">
+        <div className="bg-white rounded-3xl shadow-2xl p-4 md:p-12 mb-8 border border-gray-100">
           {/* Booking ID */}
           <div className="flex items-center justify-between pb-6 mb-6 border-b border-gray-200">
             <div>
@@ -121,7 +144,7 @@ export default function BookingSuccessPage() {
                 </div>
                 <div className="flex-1">
                   <p className="text-sm text-gray-500 mb-1">Check-in</p>
-                  <p className="text-lg font-semibold text-gray-900">
+                  <p className="md:text-lg font-semibold text-gray-900">
                     {currentBooking.check_in ? new Date(currentBooking.check_in).toLocaleDateString("en-US", {
                       weekday: "long",
                       month: "long",
@@ -139,7 +162,7 @@ export default function BookingSuccessPage() {
                 </div>
                 <div className="flex-1">
                   <p className="text-sm text-gray-500 mb-1">Check-out</p>
-                  <p className="text-lg font-semibold text-gray-900">
+                  <p className="md:text-lg font-semibold text-gray-900">
                     {currentBooking.check_out ? new Date(currentBooking.check_out).toLocaleDateString("en-US", {
                       weekday: "long",
                       month: "long",
@@ -160,7 +183,7 @@ export default function BookingSuccessPage() {
                 </div>
                 <div className="flex-1">
                   <p className="text-sm text-gray-500 mb-1">Room</p>
-                  <p className="text-lg font-semibold text-gray-900">
+                  <p className="md:text-lg font-semibold text-gray-900">
                     Room {currentBooking.room_number || "N/A"}
                   </p>
                 </div>
@@ -172,7 +195,7 @@ export default function BookingSuccessPage() {
                 </div>
                 <div className="flex-1">
                   <p className="text-sm text-gray-500 mb-1">Guests</p>
-                  <p className="text-lg font-semibold text-gray-900">
+                  <p className="md:text-lg font-semibold text-gray-900">
                     {currentBooking.adults || 0} {(currentBooking.adults || 0) === 1 ? "Adult" : "Adults"}
                     {(currentBooking.children || 0) > 0 &&
                       `, ${currentBooking.children} ${
@@ -208,13 +231,13 @@ export default function BookingSuccessPage() {
 
         {/* Action Buttons */}
         <div className="grid md:grid-cols-3 gap-4 mb-8">
-          <button className="flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-700 font-semibold py-4 px-6 rounded-xl border-2 border-gray-200 transition-all">
-            <Mail size={20} />
-            Email Confirmation
+          <button onClick={() => navigate("/rooms")} className="flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-700 font-semibold py-4 px-6 rounded-xl border-2 border-gray-200 transition-all">
+            <Bed size={20} />
+            Browse Rooms
           </button>
-          <button className="flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-700 font-semibold py-4 px-6 rounded-xl border-2 border-gray-200 transition-all">
-            <Download size={20} />
-            Download Receipt
+          <button onClick={() => navigate("/my-bookings")} className="flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-700 font-semibold py-4 px-6 rounded-xl border-2 border-gray-200 transition-all">
+            <CalendarCheck size={20} />
+            View Bookings
           </button>
           <button
             onClick={() => navigate("/")}
@@ -253,22 +276,7 @@ export default function BookingSuccessPage() {
         </div>
       </div>
 
-      <style>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-fade-in {
-          animation: fade-in 0.6s ease-out;
-        }
-      `}</style>
+      <Footer />                
     </div>
   );
 }
