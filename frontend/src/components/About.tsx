@@ -3,11 +3,13 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useMediaQuery } from 'react-responsive'
+import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function About() {
     const isMobile = useMediaQuery({ maxWidth: 768 })
+    const navigate = useNavigate()
     
     useGSAP(() => {
 
@@ -165,7 +167,7 @@ function About() {
                     </span>
                     
                     <span id="buttons" className="grid md:flex lg:flex gap-10 lg:gap-[5rem] mt-6 lg:mt-1">
-                        <button className="py-3 w-[50%] md:w-[30%] lg:w-[35%] lg:px-12 rounded-[6px] bg-[#76be81] text-white hover:bg-[#1c1c1c] hover:text-white duration-100 ease-in">ABOUT US</button>
+                        <button onClick={()=> {navigate("/contact-us")}} className="py-3 w-[50%] md:w-[30%] lg:w-[35%] lg:px-8 rounded-[6px] bg-[#76be81] text-white hover:bg-[#1c1c1c] hover:text-white duration-100 ease-in">CONTACT US</button>
 
                         <span className="flex items-center">
                             <span className="p-4 rounded-full bg-[#1c1c1c]">

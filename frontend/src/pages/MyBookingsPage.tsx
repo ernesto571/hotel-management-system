@@ -131,7 +131,7 @@ export default function MyBookingsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header Section */}
-      <div className="relative w-full h-[280px] md:h-[320px] overflow-hidden">
+      <div className="relative w-full h-[320px] md:h-[350px] lg:h-[400px] overflow-hidden">
         <img
           src="/room-details-img.jpg"
           className="w-full h-full object-cover"
@@ -197,7 +197,7 @@ export default function MyBookingsPage() {
 
         {/* Bookings List */}
         {filteredBookings.length === 0 ? (
-          <div className="bg-white rounded-2xl shadow-md p-12 text-center">
+          <div className="bg-white rounded-2xl shadow-md py-12 px-6  md:p-12 text-center">
             <div className="max-w-md mx-auto">
               <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Calendar size={40} className="text-gray-400" />

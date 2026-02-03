@@ -87,7 +87,12 @@ function ContactPage (){
                 </section>
 
                 {/* right section */}
-                <section className="lg:col-span-2 lg:pl-8">
+                <section className="lg:col-span-2  lg:pl-10">
+                    <h3 className="text-[1.7rem] md:text-[2.2rem] font-serif tracking-wide font-extralight ">
+                    Send Us A Message
+                    </h3>
+                    <p className="pt-3 md:py-2 text-sm text-gray-700">Have a question or ready to book? Send us a message and we'll respond promptly.</p>
+
                     <ContactForm />
                 </section>
             </div>

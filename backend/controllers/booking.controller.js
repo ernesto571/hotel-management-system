@@ -378,7 +378,7 @@ export const cleanupPendingBookings = async () => {
       SET status = 'cancelled'
       WHERE status = 'pending'
         AND payment_status = 'unpaid'
-        AND created_at < NOW() - INTERVAL '30 minutes'
+        AND created_at < NOW() - INTERVAL '10 minutes'
     `;
   } catch (error) {
     console.error("Cleanup error:", error);

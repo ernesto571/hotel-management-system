@@ -18,7 +18,7 @@ function Theme (){
     const config = {
       duration: isMobile ? 0.1 : 0.5,
       stagger: isMobile ? 0.15 : 0.1,
-      start: isMobile ? 'bottom 110%' : 'bottom 4%',
+      start: isMobile ? 'bottom 110%' : 'bottom 110%',
     };
 
     gsap.set('.theme-title', { 
@@ -38,21 +38,6 @@ function Theme (){
         toggleActions: 'play none none none',
       }
     });
-
-
-      gsap.from('#theme-pic', {
-            opacity: 0, 
-            y: 30,
-            delay: 0.2,
-            duration: 0.5,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: 'theme-pic',
-                start: isMobile ? 'bottom 250%' : "bottom 40%",
-                toggleActions: 'play none none none',
-            }
-        });
-
       
   }, [isMobile]);
     const { images, fetchHotelImages } = useHotelImageStore();

@@ -80,7 +80,7 @@ export const useBookingStore = create<BookingStore>((set, get) => ({
       console.error("createBooking: Error occurred", error);
 
       const errorMessage =
-        error.response?.data?.message || "Failed to create booking";
+        error.response?.data?.message || "Booking failed. Please log in to continue.";
 
       set({
         error: errorMessage,

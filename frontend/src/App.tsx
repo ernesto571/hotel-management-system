@@ -44,7 +44,46 @@ function App() {
           <Route path="/sign-in/*" element={<SignInPage/>} />
           <Route path="/sign-up/*" element={<SignUpPage />} />
         </Routes>
-        <Toaster />
+
+        <Toaster
+          position="bottom-center"
+          toastOptions={{
+            // Default options for all toasts
+            duration: 4000,
+            style: {
+              background: '#1f2937', // dark gray background
+              color: '#fff',
+              padding: '16px',
+              borderRadius: '10px',
+              fontSize: '14px',
+            },
+            
+            // Success toast styling
+            success: {
+              style: {
+                background: '#059669', // emerald-600
+              },
+              iconTheme: {
+                primary: '#fff',
+                secondary: '#059669',
+              },
+            },
+            
+            // Error toast styling
+            error: {
+              style: {
+                background: '#dc2626', // red-600
+              },
+              iconTheme: {
+                primary: '#fff',
+                secondary: '#dc2626',
+              },
+            },
+            
+            // Custom icon (your logo)
+            icon:  <img src="/logo_01.png" alt="logo" className="w-6 h-6" />,
+          }}
+        />
       </div>
     </BrowserRouter>
   )

@@ -120,7 +120,7 @@ function Hero() {
             <button onClick={() => {navigate(`/contact-us`)}} className="px-6 py-3 bg-[#234c48] text-white border border-white font-semibold rounded-[5px] hover:bg-gray-900 ease-in-out duration-200">
               CONTACT US
             </button>
-            <button  onClick={() => {navigate(`/rooms`)}} className="px-6 py-3 border bg-white text-[#1a4042] rounded-[5px]">
+            <button  onClick={() => {navigate(`/rooms`)}} className="px-6 py-3 border bg-white text-[#1a4042] rounded-[5px] hover:bg-gray-300 ease-in-out duration-200">
               OUR ROOMS
             </button>
           </div>
