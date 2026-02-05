@@ -7,7 +7,6 @@
     "seed:hotel": "node seed/index.js",
     "start": "node src/server.js"
   },
-
   "type": "module",
   "keywords": [],
   "author": "",
@@ -22,6 +21,7 @@
     "express": "^5.2.1",
     "helmet": "^8.1.0",
     "morgan": "^1.10.1",
+    "node-cron": "^4.2.1",
     "stripe": "^20.1.0"
   },
   "devDependencies": {

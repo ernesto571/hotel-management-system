@@ -7,6 +7,8 @@ import userRoutes from "../routes/auth.route.js"
 import hotelImagesRoutes from "../routes/hotel_images.route.js"
 import roomTypes from "../routes/room_types.route.js"
 import bookingRoutes from "../routes/booking.route.js"
+import cron from 'node-cron';
+import { cleanupPendingBookings } from "../controllers/booking.controller.js";
 import "dotenv/config";
 
 
@@ -27,11 +29,18 @@ app.use((req, res, next) => {
     next();
 });
 
+
 app.use(clerkMiddleware());
 app.use("/api/users", userRoutes);
 app.use("/api", hotelImagesRoutes);
 app.use("/api", roomTypes);
 app.use("/api/bookings", bookingRoutes);
+
+// Run cleanup every 5 minutes
+cron.schedule('*/5 * * * *', async () => {
+    console.log('Running booking cleanup...');
+    await cleanupPendingBookings();
+  });
 
 // app.get("/", (req, res) => {
 //     console.log("hotel backend");
