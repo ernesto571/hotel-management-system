@@ -88,24 +88,22 @@ Backend
 * CORS
 
 🔗 API Overview
+🏨 Hotel Images
+
+* GET /api/hotel-images — Fetch all hotel images
 
 🏨 Rooms
 
-* GET /api/rooms — Fetch all available rooms
-* GET /api/rooms/standard — Fetch standard rooms
-* GET /api/rooms/deluxe — Fetch deluxe rooms
-* GET /api/rooms/suites — Fetch suites
-* GET /api/rooms/:id — Fetch single room details
+* GET /api/room-types — Fetch all room types
 
 📅 Bookings
 
-* GET /api/bookings — View authenticated user's bookings
-* POST /api/bookings — Create a new booking
+* GET /api/bookings/my-bookings — View authenticated user's bookings
+* POST /api/bookings/create — Create a new booking
+* POST /api/bookings/confirm — Confirm booking after payment
+* POST /api/bookings/:id/cancel — Cancel a booking by ID
 * GET /api/bookings/:id — View booking details
 
-💳 Payments
-
-* POST /api/payment — Create Stripe checkout session
 
 🛠️ Admin (Protected – Future Update)
 
